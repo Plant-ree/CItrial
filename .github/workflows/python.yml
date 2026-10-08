@@ -1,0 +1,14 @@
+# image of an OS
+image: ubuntu:20.04
+pytest:
+stage: test
+before_script:
+# update ubuntu
+- apt-get update
+# install pip
+- apt-get install -y python3-pip
+# install python packages
+- pip3 install pytest
+script:
+# run pytest
+- pytest
