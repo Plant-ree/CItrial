@@ -14,10 +14,10 @@ jobs:
       
       - name: Continue installing
         run: |
-          apt-get install -y python3-pip
+          sudo apt-get install -y python3-pip
       - name: Packages
         run: |
-          pip3 install pytest
+          sudo pip3 install pytest
       - name: Run test
         run: |
           pytest
