@@ -1,14 +1,25 @@
-# image of an OS
-image: ubuntu:20.04
-pytest:
-stage: test
-before_script:
-# update ubuntu
-- apt-get update
-# install pip
-- apt-get install -y python3-pip
-# install python packages
-- pip3 install pytest
-script:
-# run pytest
-- pytest
+name: Run Unit Test via Pytest
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          apt-get update
+      - name: Continue installing
+        run: |
+          apt-get install -y python3-pip
+      - name: Packages
+        run: |
+          pip3 install pytest
+      - name: Run test
+        run: |
+          pytest
